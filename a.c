@@ -97,7 +97,7 @@ pop_flush_task(void *arg)
         struct msg *m = pop(q);
         if (m) {
             __sync_fetch_and_add(&pop_total, 1);
-            msg_flags[(m - msgs)] = 1;
+            msg_flags[(m - msgs)] += 1;
         }
 #else
         if (pop(q))
